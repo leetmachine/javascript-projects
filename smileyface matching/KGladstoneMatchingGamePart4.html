@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Keegan's Matching Game</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        img { position: absolute;}
-        div { position: absolute; width: 500px; height: 500px;}
-        
 
-        #rightSide { left: 500px; border-left: 1px solid black;}
+<head>
+    <title>Keegan's Matching Game</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        img {
+            position: absolute;
+        }
+        
+        div {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+        }
+        
+        #rightSide {
+            left: 500px;
+            border-left: 1px solid black;
+        }
     </style>
 
-    </head>
-    <body onload="generateFaces()">
-        <h1>Keegan's Matching Game</h1>
+</head>
+
+<body onload="generateFaces()">
+    <h1>Keegan's Matching Game</h1>
+    <p>Game: Find the smiley face on the left panel that doesn't belong! Each level refreshes and adds five more smiley face, increasing difficulty.</p>
     <div id="leftSide"></div>
     <div id="rightSide"></div>
 
@@ -26,7 +38,7 @@
 
 
         function generateFaces() {
-            for ( var i = 0; i < numberOfFaces; i++) {
+            for (var i = 0; i < numberOfFaces; i++) {
                 var img = document.createElement("IMG");
                 img.src = "http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png";
                 img.style.top = (Math.floor(Math.random() * 400) + 1) + "px";
@@ -36,25 +48,25 @@
                 theLeftSide.appendChild(img);
             }
 
-            var leftSideImages =theLeftSide.cloneNode(true);
-                leftSideImages.removeChild(leftSideImages.lastChild);
-                theRightSide.appendChild(leftSideImages);
+            var leftSideImages = theLeftSide.cloneNode(true);
+            leftSideImages.removeChild(leftSideImages.lastChild);
+            theRightSide.appendChild(leftSideImages);
 
             theLeftSide.lastChild.onclick = function nextLevel(event) {
                 event.stopPropagation();
 
-                while(theLeftSide.firstChild) {
+                while (theLeftSide.firstChild) {
                     theLeftSide.removeChild(theLeftSide.firstChild);
                 }
 
-                while(theRightSide.firstChild) {
+                while (theRightSide.firstChild) {
                     theRightSide.removeChild(theRightSide.firstChild);
                 }
 
                 numberOfFaces += 5;
                 generateFaces();
 
-                
+
             }
 
             theBody.onclick = function gameOver() {
@@ -64,8 +76,8 @@
                 theLeftSide.lastChild.onclick = null;
             }
         }
-
     </script>
 
-    </body>
+</body>
+
 </html>
