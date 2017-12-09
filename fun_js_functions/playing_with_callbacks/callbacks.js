@@ -20,6 +20,7 @@ execute(function(){
 });
 
 //step 3: change the anonymous function to a fat arrow function
+//AirBnb style: use fat arrows in place on anonymous functions. It creates a version of the anonymous function that executes in the context of 'this', which is usually what you want.
 execute(() => {
     console.log('runMe as a fat arrow...step 3');
 });
